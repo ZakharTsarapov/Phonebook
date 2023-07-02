@@ -1,78 +1,115 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from '../../redux/operations';
-import { nanoid } from 'nanoid';
+import { useState } from 'react';
+import {
+  useGetAllContactsQuery,
+  useAddContactMutation,
+} from 'services/phonebookAPI';
+import { nanoid } from '@reduxjs/toolkit';
+import { Notify } from 'notiflix';
 import css from './ContactForm.module.css';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { getContactsItems } from 'redux/contactsSlice';
-import { fetchContacts } from '../../redux/operations';
-import { useEffect } from 'react';
 
-const nameId = nanoid();
-const numberId = nanoid();
 
-export const ContactForm = () => {
-  const { items: contacts = [] } = useSelector(getContactsItems);
+export default function ContactForm() {
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
 
-  const dispatch = useDispatch();
+  const { data: contacts } = useGetAllContactsQuery();
+  const [addContact, { isLoading: isCreating }] = useAddContactMutation();
 
-  useEffect(() => {
-    dispatch(fetchContacts()); // при першому рендері викликає ф-цію запиту на бекенд за контактами
-  }, [dispatch]); //useEffect не знає що таке dispatch/чи він здатен змінитися і про всяк випадок просить його в залежність
+  const nameInputId = nanoid();
+  const numberInputId = nanoid();
 
-  const checkName = (name, phone) => {
-    const chekingName = contacts.some(
-      contact => contact.name.toLowerCase() === name.toLowerCase()
-    );
+  const onInputChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'name':
+        return setName(value);
+      case 'number':
+        return setNumber(value);
+      default:
+        return;
+    }
+  };
 
-    if (chekingName) {
-      Notify.failure(`${name} is already in contacts`);
+  const formReset = () => {
+    setName('');
+    setNumber('');
+  };
+
+  const onContactFormSubmit = async evt => {
+    evt.preventDefault();
+
+    if (
+      contacts.find(
+        contact =>
+          contact.name.toLowerCase() === name.toLowerCase() &&
+          contact.number === number
+      )
+    ) {
+      Notify.info('цей контакт вже є у списку');
       return;
     }
 
-    const newContact = { name, phone };
+    if (contacts.find(contact => contact.number === number)) {
+      Notify.info('Телефон вже е у базі');
+      return;
+    }
 
-    dispatch(addContact(newContact));
-  };
+    const newContact = {
+      name,
+      number,
+    };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const name = e.target.elements.name.value.trim();
-    const phone = e.target.elements.number.value.trim();
-    checkName(name, phone);
-    e.target.reset();
+    try {
+      await addContact(newContact);
+      Notify.success('Новий контакт був доданий');
+    } catch (error) {
+      console.log(error.message);
+      Notify.failure('Помилка, контакт не створенно');
+    }
+
+    formReset();
   };
 
   return (
-    <form className={css.contact__form} onSubmit={handleSubmit}>
-      <label className={css.contact__label} htmlFor={nameId}>
-        Name
-        <input
-          className={css.contact__input}
-          id={nameId}
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-        />
-      </label>
-      <label className={css.contact__label} htmlFor={numberId}>
-        Number
-        <input
-          className={css.contact__input}
-          id={numberId}
-          type="tel"
-          name="number"
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-        />
-      </label>
-      <button className={css.contact__btn} type="submit">
-        Add contact
-      </button>
-    </form>
+    <div className={css.container}>
+      <form className={css.contact__form} onSubmit={onContactFormSubmit}>
+        <label className={css.contact__label} htmlFor={nameInputId}>
+          Ім'я
+          <input
+            className={css.contact__input}
+            type="text"
+            name="name"
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            value={name}
+            onChange={onInputChange}
+            id={nameInputId}
+            required
+          />
+        </label>
+
+        <label className={css.contact__label} htmlFor={numberInputId}>
+          Телефон
+          <input
+            className={css.contact__input}
+            type="tel"
+            name="number"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            value={number}
+            onChange={onInputChange}
+            id={numberInputId}
+            required
+          />
+        </label>
+
+        <button
+          className={css.contact__btn}
+          type="submit"
+          disabled={isCreating}
+        >
+          {isCreating ? 'Додаємо...' : 'Додати контакт'}
+        </button>
+      </form>
+    </div>
   );
 }
-  
-

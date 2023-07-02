@@ -41,12 +41,11 @@ export default function Login() {
 
       <form className={css.login} onSubmit={onFormSubmit} autoComplete="off">
         <label className={css.label} htmlFor={emailInputId}>
-          E-mail
+          Пошта
           <input
             className={css.input}
             type="email"
             name="email"
-            placeholder="Enter e-mail"
             value={email}
             onChange={onInputChange}
             id={emailInputId}
@@ -55,12 +54,11 @@ export default function Login() {
         </label>
 
         <label className={css.label} htmlFor={passwordInputId}>
-          Password
+          Пароль
           <input
             className={css.input}
             type="password"
             name="password"
-            placeholder="Enter password"
             value={password}
             onChange={onInputChange}
             id={passwordInputId}
@@ -69,7 +67,7 @@ export default function Login() {
         </label>
 
         <button className={css.btn} type="submit">
-          Log in
+          Вхід
         </button>
       </form>
     </div>

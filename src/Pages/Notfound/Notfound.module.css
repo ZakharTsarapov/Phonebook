@@ -4,7 +4,6 @@
     align-items: center;
 }
 
-
 .text {
     margin-top: 180px;
     margin-bottom: 20px;
@@ -15,20 +14,20 @@
 }
 
 .link {
-display: flex;
-align-items: center;
-justify-content: center;
-width: 160px;
-height: 50px;
-font-size: 18px;
-text-align: center;
-text-transform: uppercase;
-border: 0px;
-border-radius: 20px;
-background-color: #3498db;
-color: white;
-box-shadow: none;
-transition: all 250ms ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    height: 50px;
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
+    border: 0px;
+    border-radius: 20px;
+    background-color: #3498db;
+    color: white;
+    box-shadow: none;
+    transition: all 250ms ease-in-out;
 }
 
 .link:hover,

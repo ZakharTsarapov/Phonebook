@@ -1,6 +1,5 @@
 .filter {
-
-    color: aqua;
+    color: green;
     font-size: 20px;
     display: flex;
     justify-content: center;
@@ -8,6 +7,15 @@
 
 .filter__input {
     margin-left: 30px;
-    border: 2px solid tomato;
+    border: 2px solid green;
     cursor: pointer;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 5px;
+
 }

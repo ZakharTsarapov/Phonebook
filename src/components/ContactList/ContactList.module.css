@@ -1,0 +1,55 @@
+.item {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    color: green;
+    justify-content: space-around;
+}
+
+.item__btn {
+    margin-left: 10px;
+    height: 30px;
+    background-color: green;
+    border: none;
+    cursor: pointer;
+    transition: all 250ms ease-in-out;
+}
+
+.list:first-of-type {
+    padding-top: 20px;
+}
+
+.list:last-child {
+    padding-bottom: 20px;
+}
+
+.list:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.loader {
+    font-size: 24px;
+    color: tomato;
+}
+
+.text {
+    font-size: 18px;
+    color: green;
+}
+
+.quantity {
+    margin-left: 4px;
+    color: tomato;
+    font-size: 30px;
+}
+
+.nomatch {
+    margin: 20px 0;
+    font-size: 18px;
+}
+
+.refetch {
+    margin-top: 20px;
+    font-size: 18px;
+}

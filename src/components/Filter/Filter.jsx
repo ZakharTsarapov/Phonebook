@@ -1,26 +1,34 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from '../../redux/filterSlice';
 import css from './Filter.module.css';
+import { getFilterValue } from '../../redux/filterSlice';
+import { nanoid } from 'nanoid';
 
-export const Filter = () => {
-  const dispatch = useDispatch()
+export default function Filter() {
+  const filterValue = useSelector(getFilterValue);
+  const dispatch = useDispatch();
 
-  const onChange = (event) => {
-    dispatch(setFilter(event.target.value));
-  }
+  const filterInputId = nanoid();
+
+  const onChange = evt => {
+    dispatch(setFilter(evt.currentTarget.value.trim()));
+  };
  
   
-    return (
-      <label className={css.filter}>
-        Find contacts by name
+  return (
+    <div className={css.container}>
+      <label className={css.filter} htmlFor={filterInputId}>
+        Пошук контактів за ім'ям
         <input
           className={css.filter__input}
           type="text"
           onChange={onChange}
-          required
+          id={filterInputId}
+          name={filterValue}
         ></input>
       </label>
-    );
+    </div>
+  );
 }
  
 

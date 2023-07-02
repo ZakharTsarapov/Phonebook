@@ -44,14 +44,13 @@ export default function Register() {
     <div className={css.container}>
       <h1 className={css.grettings}>Регістрація нового користувача</h1>
 
-      <form className={css.regiter} onSubmit={onFormSubmit} autoComplete="off">
+      <form className={css.register} onSubmit={onFormSubmit} autoComplete="off">
         <label className={css.label} htmlFor={nameInputId}>
           Ім'я
           <input
             className={css.input}
             type="text"
             name="name"
-            placeholder="Enter your name"
             value={name}
             onChange={onInputChange}
             id={nameInputId}
@@ -60,12 +59,11 @@ export default function Register() {
         </label>
 
         <label className={css.label} htmlFor={emailInputId}>
-          імеїл
+          Пошта
           <input
             className={css.input}
             type="email"
             name="email"
-            placeholder="Enter your e-mail"
             value={email}
             onChange={onInputChange}
             id={emailInputId}
@@ -79,7 +77,6 @@ export default function Register() {
             className={css.input}
             type="password"
             name="password"
-            placeholder="Set password"
             value={password}
             onChange={onInputChange}
             id={passwordInputId}

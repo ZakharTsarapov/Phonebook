@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 420px;
+    height: 50px;
+    background-color: white;
+}
+
+.name {
+    margin-left: 20px;
+    font-size: 24px;
+}
+
+.number {
+    margin-left: auto;
+    font-size: 24px;
+    text-decoration: none;
+    transition: all 250ms ease-in-out;
+    color: tomato;
+}
+
+.number:hover,
+.number:focus {
+    color: peru;
+}
+
+.btn {
+    height: 27px;
+    padding: 0;
+    margin: 0 20px 0 50px;
+    color: green;
+    background-color: transparent;
+    border: none;
+    transition: all 250ms ease-in-out;
+}
+
+.btn:hover,
+.btn:focus {
+    color: yellowgreen;
+}
+
+.btn:disabled {
+    color: gray;
+}

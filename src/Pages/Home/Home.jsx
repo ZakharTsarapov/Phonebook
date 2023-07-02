@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       {isLoggedIn ? (
-        <h1 className={css.grettings}>Створити персональну книгу контактів</h1>
+        <h1 className={css.grettings}>Тут ти можешь створювати та зберігати свої контакти</h1>
       ) : (
         <>
           <h1 className={css.grettings}>Вітаю у додадтку книги контактів</h1>
