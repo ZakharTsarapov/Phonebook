@@ -4,7 +4,7 @@
     text-transform: uppercase;
     font-weight: 500;
     font-size: 22px;
-    color: green;
+    color: white;
     text-decoration: none;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -14,8 +14,8 @@
 }
 
 .navlink:active {
-    color: yellowgreen;
-    text-shadow: 1px 0 11px rgb(85, 219, 52);
+    color: whitesmoke;
+    text-shadow: 1px 0 11px whitesmoke;
 }
 
 .nav {

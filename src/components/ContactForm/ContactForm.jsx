@@ -73,7 +73,7 @@ export default function ContactForm() {
     <div className={css.container}>
       <form className={css.contact__form} onSubmit={onContactFormSubmit}>
         <label className={css.contact__label} htmlFor={nameInputId}>
-          Ім'я
+          Name
           <input
             className={css.contact__input}
             type="text"
@@ -88,7 +88,7 @@ export default function ContactForm() {
         </label>
 
         <label className={css.contact__label} htmlFor={numberInputId}>
-          Телефон
+          Phone
           <input
             className={css.contact__input}
             type="tel"
@@ -107,7 +107,7 @@ export default function ContactForm() {
           type="submit"
           disabled={isCreating}
         >
-          {isCreating ? 'Додаємо...' : 'Додати контакт'}
+          {isCreating ? 'Adding...' : 'Add Contact'}
         </button>
       </form>
     </div>

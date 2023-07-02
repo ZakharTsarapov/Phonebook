@@ -6,9 +6,9 @@ import ContactForm from 'components/ContactForm/ContactForm';
 export default function Phonebook() {
   return (
     <>
-      <SectionName title="Додати контакт" />
+      <SectionName title="Add contact" />
       <ContactForm />
-      <SectionName title="Контакти" />
+      <SectionName title="Contacts" />
       <Filter />
       <ContactList />
     </>

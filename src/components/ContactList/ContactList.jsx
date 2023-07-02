@@ -49,11 +49,11 @@ export default function ContactList() {
   return (
     <>
       {isLoading ? (
-        <p className={css.loader}>Завантаження...</p>
+        <p className={css.loader}>Loaging...</p>
       ) : totalContactsAmount() > 0 ? (
         <>
           <p className={css.text}>
-            Кількість контактів:{' '}
+            Total Contacts:{' '}
             <span className={css.quantity}>{totalContactsAmount()}</span>
           </p>
           <ul className={css.item}>
@@ -64,20 +64,20 @@ export default function ContactList() {
                 </li>
               ))
             ) : (
-              <p className={css.nomatch}>Немає контакту</p>
+              <p className={css.nomatch}>there no contacts</p>
             )}
           </ul>
         </>
       ) : (
         <>
           <p className={css.text}>
-            Немає контактів у вашій книзі
+            No contacts in ur phonebook
           </p>
         </>
       )}
       {isError && (
         <>
-          <p className={css.refetch}>Помилка! Оновіть список контактів</p>
+          <p className={css.refetch}>Error! Refresh ur Phonebook</p>
           <button
             className={css.item__btn}
             type="button"

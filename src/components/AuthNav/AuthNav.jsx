@@ -4,8 +4,8 @@ import css from './AuthNav.module.css';
 export default function AuthNav() {
   return (
     <nav className={css.nav}>
-      <NavLink className={css.link} to="/login">Вхід</NavLink>
-      <NavLink className={css.link} to="/register">Регістрація</NavLink>
+      <NavLink className={css.link} to="/login">Sing in</NavLink>
+      <NavLink className={css.link} to="/register">Sing up</NavLink>
     </nav>
   );
 }

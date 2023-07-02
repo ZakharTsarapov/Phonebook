@@ -16,7 +16,7 @@ export default function Layout() {
   return (
     <>
       <header className={css.header}>
-        <AppName title="Книга Контактів" />
+        <AppName title="Phonebook" />
         <Navigation />
         {isLoggedIn ? <UserMenu /> : <AuthNav />}
       </header>

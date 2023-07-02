@@ -37,11 +37,11 @@ export default function Login() {
 
   return (
     <div className={css.container}>
-      <h1 className={css.grettings}>Вхід в додаток</h1>
+      <h1 className={css.grettings}>Sing in</h1>
 
       <form className={css.login} onSubmit={onFormSubmit} autoComplete="off">
         <label className={css.label} htmlFor={emailInputId}>
-          Пошта
+          Email
           <input
             className={css.input}
             type="email"
@@ -54,7 +54,7 @@ export default function Login() {
         </label>
 
         <label className={css.label} htmlFor={passwordInputId}>
-          Пароль
+          Password
           <input
             className={css.input}
             type="password"
@@ -67,7 +67,7 @@ export default function Login() {
         </label>
 
         <button className={css.btn} type="submit">
-          Вхід
+          Enter
         </button>
       </form>
     </div>

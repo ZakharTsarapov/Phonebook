@@ -8,8 +8,8 @@ export default function Navigation() {
 
   return (
     <nav className={css.nav}>
-      <NavLink className={css.navlink} to="/">Головна</NavLink>
-      {isLoggedIn && <NavLink className={css.navlink} to="/contacts">Контакти</NavLink>}
+      <NavLink className={css.navlink} to="/">Home</NavLink>
+      {isLoggedIn && <NavLink className={css.navlink} to="/contacts">Contacts</NavLink>}
     </nav>
   );
 }

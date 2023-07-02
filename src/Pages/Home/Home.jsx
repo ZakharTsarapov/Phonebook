@@ -8,12 +8,12 @@ export default function Home() {
   return (
     <>
       {isLoggedIn ? (
-        <h1 className={css.grettings}>Тут ти можешь створювати та зберігати свої контакти</h1>
+        <h1 className={css.grettings}>There u can create ur Phonebook</h1>
       ) : (
         <>
-          <h1 className={css.grettings}>Вітаю у додадтку книги контактів</h1>
-          <p className={css.text}>
-            Для початку створіть новий аккаутн або увійдіть у свій обліковий запис.
+          <h1 className={css.grettings}>Grettings in Phonebook application</h1>
+            <p className={css.text}>
+              For a start create new account or sing in.
           </p>
         </>
       )}

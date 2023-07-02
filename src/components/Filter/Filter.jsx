@@ -18,7 +18,7 @@ export default function Filter() {
   return (
     <div className={css.container}>
       <label className={css.filter} htmlFor={filterInputId}>
-        Пошук контактів за ім'ям
+        Find contacts by name
         <input
           className={css.filter__input}
           type="text"
