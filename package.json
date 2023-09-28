@@ -2,7 +2,7 @@
   "name": "react-homework-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ZakharTsarapov.github.io/goit-react-hw-08-phonebook",
+  "homepage": "https://ZakharTsarapov.github.io/Phonebook",
   "dependencies": {
     "@chakra-ui/react": "^2.7.1",
     "@emotion/react": "^11.11.1",
@@ -24,6 +24,7 @@
     "react-scripts": "5.0.1",
     "redux": "^4.2.1",
     "redux-persist": "^6.0.0",
+    "typescript": "^5.1.6",
     "web-vitals": "^2.1.3"
   },
   "scripts": {
@@ -51,4 +52,5 @@
       "last 1 safari version"
     ]
   }
+  
 }
